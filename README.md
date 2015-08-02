@@ -1,5 +1,5 @@
 # goid
-Souce and stuff for the Game of Intelligent Design
+Source and stuff for the Game of Intelligent Design
 
 Overview
 --------
