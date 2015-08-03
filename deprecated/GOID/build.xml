@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (C) 2006-2009 Serotonin Software Technologies Inc.
+  @author Matthew Lohbihler
+-->
+<project name="GOID" basedir="." default="deploy">
+	<property file="build.properties"/>
+	
+    <property name="src-applet.dir" value="src-applet"/>
+    <property name="src-task.dir" value="src"/>
+    <property name="lib.dir" value="lib"/>
+	<property name="build.dir" value="build"/>
+	
+	<path id="master-classpath">
+		<pathelement path="${build.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+	</path>
+	
+	<target name="clean" description="Clean output directories">
+		<delete dir="${build.dir}"/>
+		<mkdir dir="${build.dir}"/>
+	</target>
+	
+    <target name="compile" description="Compile main source tree java files">
+        <mkdir dir="${build.dir}/applet"/>
+        <mkdir dir="${build.dir}/task"/>
+        
+        <javac destdir="${build.dir}/applet" debug="true" debuglevel="lines,vars,source"
+                deprecation="false" optimize="false" failonerror="true">
+        	<!-- <compilerarg value="-Xlint"/> -->
+            <src path="${src-applet.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+        
+        <javac destdir="${build.dir}/task" debug="true" debuglevel="lines,vars,source"
+                deprecation="false" optimize="false" failonerror="true">
+            <src path="${src-task.dir}"/>
+            <classpath refid="master-classpath"/>
+            <classpath path="${build.dir}/applet"/>
+        </javac>
+    </target>
+    
+    <target name="static" description="Copy static files to the build dir">
+        <copy todir="${build.dir}/task" preservelastmodified="true">
+            <fileset dir="${src-task.dir}">
+                <include name="**/*.js"/>
+        	</fileset>
+        </copy>
+        	
+        <mkdir dir="${build.dir}/applet/images"/>
+        <copy todir="${build.dir}/applet/images" preservelastmodified="true">
+            <fileset dir="images"/>
+        </copy>
+    </target>
+                
+    <target name="jar" depends="compile,static" description="Create a jar file of the compiled classes">
+        <delete file="goid.jar"/>
+        <delete file="task.jar"/>
+        
+        <jar destfile="goid.jar">
+            <fileset dir="${build.dir}/applet">
+                <include name="**/*"/>
+            </fileset>
+        </jar>
+        
+        <jar destfile="task.jar">
+            <fileset dir="${build.dir}/task">
+                <include name="**/*"/>
+            </fileset>
+        </jar>
+    </target>
+    
+    <target name="deploy" depends="jar" description="Copy static assets to web server">
+    	<copy todir="${jar.target}" preservelastmodified="true">
+            <fileset file="goid.jar"/>
+            <fileset file="task.jar"/>
+            <fileset file="lib/seroUtils.jar"/>
+            <fileset file="lib/commons-httpclient-3.0.1.jar"/>
+    		<fileset file="lib/commons-logging-1.1.1.jar"/>
+            <fileset file="lib/commons-codec-1.3.jar"/>
+		</copy>
+	</target>
+</project>

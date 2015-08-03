@@ -1,0 +1,50 @@
+<p>
+  The agent in this task is a two dimensional robotic arm with two degrees of freedom. It is subject to the classical
+  mechanics rules of a <a href="http://en.wikipedia.org/wiki/Double_pendulum" target="_blank">double pendulum</a>, 
+  where the upper arm and the forearm have the same length and mass. The arm is also subject to a downward 
+  gravitational force. It begins in a motionless state hanging straight down.
+</p>
+<p>
+  The shoulder joint is able to rotate between -&pi;/2 (north) and &pi;*3/4 (southwest). The elbow joint can move from
+  -&pi; to 0, respective to the upper arm. More simply, it can move similar to a human arm if it were constrained to a
+  two dimensional plane. These movement constraints were chosen specifically to prevent the arm from having multiple 
+  possible positions to reach the same point, simplifying the task. The actuators allow torques to be applied to the 
+  shoulder and elbow joints, similar to how muscles work. Torques in this case, however, can be positive or negative. 
+  There is no imposed constraint on the forces that can be applied, but since the usage of energy negatively affects 
+  the score it is best to be conservative.
+</p>
+<p>
+  Targets will appear within the dexterous space of the wrist. To collect a target, the wrist circle must completely 
+  contain the target. Only a single target is displayed at a time. When it is collected, another will appear somewhere 
+  else.
+</p>
+<p>
+  Research shows that humans move their hands in roughly straight lines toward targets. This likely is an 
+  energy-minimization strategy, although there are other possible reasons. The sample script for this task attempts to 
+  adjust the arm's angle efficiently, but because of angular momentums the outcome is highly dependent upon current 
+  state.
+</p>
+<p>
+  Scores are calculated as follows: 50000 - turns - 2*energy. So, conservation of both time and energy is necessary for
+  the best score. The target count of 1000 was chosen to minimize the effects of randomness in the game, and to provide
+  learning algorithms with (hopefully) sufficient time to become proficient.
+</p>
+<p>senses</p>
+<ul>
+  <li>targetLocation &ndash; (Point2D) the location of the target WRT the shoulder</li>
+  <li>wristToTarget &ndash; (Point2D) the location of the target WRT the wrist</li>
+  <li>elbowToTarget &ndash; (Point2D) the location of the target WRT to the elbow</li>
+  <li>wristLocation &ndash; (Point2D) the location of the wrist WRT the shoulder</li>
+  <li>shoulderAngle &ndash; (double) the current shoulder angle</li>
+  <li>elbowAngle &ndash; (double) the current elbow angle WRT the upper arm</li>
+  <li>shoulderMomentum &ndash; (double) the current shoulder angular momentum</li>
+  <li>elbowMomentum &ndash; (double) the current elbow angular momentum</li>
+  <li>realForearmAngle &ndash; (double) the absolute angle of the forearm</li>
+  <li>targetCollected &ndash; (boolean) true if a target was collected the previous turn, false otherwise</li>
+  <li>energyUsed &ndash; (double) the amount of energy used so far</li>
+</ul>
+<p>actuators</p>
+<ul>
+  <li>shoulderTorque (unconstrained - positive is clockwise)</li>
+  <li>elbowTorque (unconstrained - positive is clockwise)</li>
+</ul>

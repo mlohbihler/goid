@@ -1,0 +1,33 @@
+<p>
+  You are <b>strongly encouraged</b> to visit the <a href="/help">help</a> page before trying this out. There you will
+  find a brief introduction to the game, and everything will make oh so much more sense.
+</p>
+<p>
+  You are also <b>strongly encouraged</b> to <a href="/register">register</a> because your scripts and other settings
+  will be automatically saved and reloaded when you return (because we all know you'll be back, right? Right?). Also,
+  'run mode' is only enabled for registered users, and you'll need this to have your score ranked in the system.
+</p>
+<p>
+  The area shaded in light yellow is where the agent needs to move next. Once the agent reaches it, the next area will
+  become shaded instead, and so on. 
+</p>
+<p>
+  The sample script (press <img src="/images/script_lightning.png"/>) for this task simply has the agent move in a wide 
+  arc, counter-clockwise when there are no obstacles, and clockwise when there are obstacles. This script (like most 
+  sample scripts) will get the job done, but is not optimised. (What would be the fun then?)
+</p>
+<p>
+  Hint: try increasing the clockwise turn rate. Of course, there are lots of other things you can try.
+</p>
+<p>senses</p>
+<ul>
+  <li>orientation &ndash; (double) angle of direction in radians from east between -&pi; and &pi;</li>
+  <li>blocked &ndash; (boolean) true if the last movement attempt was prevented by a wall</li>
+  <li>obstacles  &ndash; (double[]) list of relative directions of walls within the field of vision (the blue circle)</li>
+</ul>
+<p>actuators</p>
+<ul>
+  <li>forwardMovement (0 to 0.1)</li>
+  <li>backwardMovement (0 to 0.02)</li>
+  <li>turn (-0.05 to 0.05)</li>
+</ul>

@@ -1,0 +1,34 @@
+<p>
+  The agent in this task has a triangular visual field in front of it, shaded dark yellow. This field is able to detect
+  both obstacles (walls) and targets (small yellow circles). To collect a target the agent's body must cover the target 
+  completely.
+</p>
+<p>
+  The targets will appear distributed around three randomly determined and invisible "target centers". (Sometimes the 
+  target centers are close enough together that there appears to be less than three.) Targets will appear at a rate 
+  inversely proportional to the number of targets already displayed; the faster the agent collects targets, the faster 
+  more will appear.
+</p>
+<p>
+  As usual, the sample script for this task will get the job done (usually... read on), but it is not optimised. Some
+  mechanism for remembering the whereabouts of a target center will greatly increase the agent's performance. Also,
+  the sample script sometimes will cause the agent to get "stuck" in the lower left-hand corner and other tight spots.
+</p>
+<p>senses</p>
+<ul>
+  <li>orientation &ndash; (double) angle of direction in radians from east between -&pi; and &pi;, rounded to 2 decimal places</li>
+  <li>obstacles  &ndash; (PolarPoint2D[]) list of relative polar coordinates* of walls within the field of vision</li>
+  <li>targets &ndash; (PolarPoint2D[]) list of relative polar coordinates* of targets within the field of vision</li>
+  <li>targetsCollected &ndash; (int) the number of targets collected so far</li>
+  <li>lastMoveAmount &ndash; (double) the actual displacement of last turn's move; differs from the move amount if movement was obstructed</li>
+  <li>lastTurnAmount &ndash; (double) the actual radians of last turn's turn; will not differ from the turn amount (i.e. turns are never obstructed)</li>
+</ul>
+<p>
+  * a PolarPoint2D is an object with the methods getRadius() (double), getAngle() (double), and toCartesian() (returns
+  a Point2D object with x and y properties).
+</p>
+<p>actuators</p>
+<ul>
+  <li>move (-0.5 to 1)</li>
+  <li>turn (-0.3 to 0.3)</li>
+</ul>

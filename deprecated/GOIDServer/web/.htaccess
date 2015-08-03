@@ -1,0 +1,20 @@
+RewriteEngine on
+
+RewriteBase /
+
+RewriteRule ^$ index.php
+RewriteRule ^applet/(.*)$ applet_.php?taskId=$1
+RewriteRule ^help$ help_.php
+RewriteRule ^home$ index.php
+RewriteRule ^login$ login_.php
+RewriteRule ^logout$ logout_.php
+RewriteRule ^lostpwd$ lostpwd_.php
+RewriteRule ^play/(.*)$ play_.php?taskId=$1
+RewriteRule ^profile$ profile_.php
+RewriteRule ^register$ register_.php
+RewriteRule ^tasks$ tasks_.php
+RewriteRule ^verify$ verify_.php
+
+RewriteRule ^(.*?)_(.*?).jnlp$ jnlp.php?taskId=$1&goidId=$2
+
+RewriteRule ^sitemap\.xml$ sitemap.php

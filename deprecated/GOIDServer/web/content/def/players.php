@@ -1,0 +1,1 @@
+The number of users who have attempted or completed this game.

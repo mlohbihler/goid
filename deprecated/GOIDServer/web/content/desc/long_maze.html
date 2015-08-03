@@ -1,0 +1,40 @@
+<p>
+  The agent in this task is a small "robot" that starts off somewhere near the middle of a maze, facing a random 
+  direction. The agent's primary senses are two sensors (blue circles) on its left and right called "eyes" which
+  are triggered when they intersect the wall, and a "probe" (also blue) which senses the distance of the wall
+  directly in front of the robot. Secondarily, the agent is given constant indicator of the distance to its current
+  goal (the yellow patch of ground).
+</p>
+<p>
+  There are four goal areas located in the corners of the maze, but only one will be active to start. When that one is
+  touched, one of the other three will activate. The order of the corner-goals is random, so you'll need to rely heavily
+  on the goalDistance sense when navigating. Once all four corner goals have been reached, the final goal will activate at
+  the agent's starting location.
+</p>
+<p>
+  Though the maze is psuedo-random, there are a few important constants. The maze is contiguous, which means there are no
+  islands, and it is possible to reach any point in the maze by following one of the walls. The maze is square, and more 
+  specifically, it's 21 wall-widths wide. The paths are the same widths as the walls. All angles are right angles. The 
+  entire square is always used. Using these facts, it should be possible to build an acurate representation of the space
+  in a short period of time.
+</p>
+<p>
+  Unlike in other tasks, the maze robot is unable to sense any absolute values for position or direction, so must build
+  a picture of its surroundings as it wanders. The probe is probably the most useful sense for this, but don't rely on it
+  too heavily for navigation. Because the agent is round and the probe acts in a line, it's easy to run into corners
+  without the probe sensing them. Integrate the agent's senses and build an acurate model of the maze to get the best time!
+</p>
+<p>senses</p>
+<ul>
+  <li>blocked &ndash; (boolean) true if the last movement attempt was prevented by a wall</li>
+  <li>leftEye &ndash; (boolean) true if there is an object within the left senor's field</li>
+  <li>rightEye &ndash; (boolean) same as leftEye, but for the right sensor</li>
+  <li>probe &ndash; (double) distance to the wall directly in front of the agent (maximum = 40)</li>
+  <li>goalDistance &ndash; (double) distance from the agent to the goal that is currently active</li>
+</ul>
+<p>actuators</p>
+<ul>
+  <li>forwardMovement (0 to 1.0)</li>
+  <li>backwardMovement (0 to 0.5)</li>
+  <li>turn (-0.5 to 0.5)</li>
+</ul>

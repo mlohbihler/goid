@@ -1,0 +1,1 @@
+An instance of a GoiD. It defines the environment, the senses, the actuators, ... pretty much everything.
