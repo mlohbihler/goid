@@ -18,6 +18,8 @@ it can be adjusted.
 
 The core concept is that of agent situation: the agent has to live in a simulation that is as much like our world as is practical. To start, i will propose a simulation that will be disappointingly simple for some, but we have to start somewhere, and the intention is for it to become more complex over time.
 
+It is important to remember that there is only one simulation environment, but there can be any number of agent implementations that can run in it. (In the future, multiple agents will be able to run at the same time and compete.) We're not after "the right answer" here, but rather creating a place where many ideas can be explored at the same time.
+
 Other important concepts help define the approach. One is temporal resolution: the agent lives in real time, and receives sensory input at the millisecond level (somewhere around every 10 or 20 milliseconds, which nicely matches the frame rate of simulation viewers, and is in fact similar to the firing rate of neurons).
 
 A more advanced concept is biologically-inspired movement. You don't "turn left", "turn right", "move one block forward"... You apply a force to a joint over time like a muscle would. I call this more advanced because force-based movement (as opposed to inverse kinematics) is maddeningly difficult to get working well. (See https://www.youtube.com/watch?v=K5DcK-ImFxc for an attempt to create an artificial inchworm.) This will not be in the original simulation, but will be eventually because it's killing me to understand it.
