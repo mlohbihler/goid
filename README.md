@@ -1,4 +1,4 @@
-# goid
+# GoID
 Source and stuff for the Game of Intelligent Design
 
 Overview
