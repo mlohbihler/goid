@@ -1,0 +1,73 @@
+### Agent body
+
+- A bite of a food source has a specific mass
+- Only a given amount of food mass can be in the digestive system at a time. Over-eating damages the health of the agent.
+- Food mass is digested at a certain rate
+- Elements that are digested are are reported to the brain to allow association with food sources
+- Agent damage is measured from 0 to 50M, at which point death occurs
+- Damage incurred is reported to the brain (pain?)
+
+
+## Elements
+- change death probabilities to health damage
+- change amounts from int to long
+
+# Watus
+- ideal range 500M - 1.5B
+- pro rate death probability between 50M and 500M
+- pro rate death probability between 1.5B and 1.8B
+- rest rate: 400/t
+- move rate: +400/t
+
+# Carbus
+- ideal range 3M - 100M
+- pro rate speed reduction between 1M and 10M
+- pro rate death probability between 1M and 3M
+- pro rate death probability between 100M and 300M
+- rest rate: 10/t
+- move rate: +150/t
+
+# Protus
+- ideal range 1M - 100M
+- pro rate death probability between 300K and 1M
+- pro rate death probability between 100M and 250M
+- metabolic rate: 20/t
+- healing rate: +30/t
+
+# Lipus
+- ideal range 1M - 500M
+- pro rate death probability between 100K and 1M
+- pro rate death probability between 500M and 1B
+- when carbus drops below 3M lipus can replace at an exchange of 4C for 1L
+- used at a rate of 4/t
+
+# Hemlus
+- ideal amount: 0
+- pro rate death probability between 10K and 25K
+- used at a rate of 1/t
+
+# Vitamus
+- ideal range 100K - 50M
+- pro rate death probability between 10K and 100K
+- pro rate death probability between 50M and 500M
+- used at a minimum rate of 2/t, proportionate to the current amount
+
+# Minerus
+- ideal range 30K - 50M
+- pro rate death probability between 5K and 30K
+- pro rate death probability between 50M and 500M
+- used at a minimum rate of 1/t, proportionate to the current amount
+
+# Fibrus
+- not digested
+- used at a rate of 1000/t
+
+
+## Flavours/Aromas
+
+# Flavin
+- 
+
+
+## Food sources
+
